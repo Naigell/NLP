@@ -21,8 +21,8 @@ import matplotlib.pyplot as plt
 pd.set_option("display.max_columns", None)
 
 #load test and train datasets
-df_train = pd.read_csv("C:\\Users\\user\\Documents\\nlp project\\train.csv")
-df_test = pd.read_csv("C:\\Users\\user\\Documents\\nlp project\\test.csv")
+df_train = pd.read_csv("train.csv")
+df_test = pd.read_csv("test.csv")
 print(df_train.head())
 
 print(df_train.info())
@@ -129,10 +129,10 @@ d = pd.DataFrame({'Hashtag': list(a.keys()),
 
 #selecting top 20 most frequent hashtags
 d = d.nlargest(columns = 'Count',n=20)
-'''plt.figure(figsize=(16,5))
+plt.figure(figsize=(16,5))
 ax = sns.barplot(x='Hashtag', y='Count', data = d)
 ax.set(ylabel = 'Count')
-plt.show()'''
+plt.show()
 
 b = nltk.FreqDist(HT_negative)
 e = pd.DataFrame({'Hashtag': list(b.keys()),
@@ -140,9 +140,9 @@ e = pd.DataFrame({'Hashtag': list(b.keys()),
 
 #selecting top 20 most frequent hashtags
 e = e.nlargest(columns = 'Count',n=20)
-'''plt.figure(figsize=(16,5))
+plt.figure(figsize=(16,5))
 ax = sns.barplot(data = e, x='Hashtag', y='Count')
-plt.show()'''
+plt.show()
 
 tfidf_vectorizer = TfidfVectorizer(max_df = 0.90, min_df= 2,
                                   max_features=1000, stop_words='english')
